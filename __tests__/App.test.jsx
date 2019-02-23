@@ -11,7 +11,6 @@ describe("test <App />", () => {
 
   it("render click to third tab", () => {
     const wrapper = mount(<App />);
-    console.log("tab", wrapper.find("Tab").get(3));
     wrapper
       .find('[data-test-name="mario-tab"]')
       .at(3)
