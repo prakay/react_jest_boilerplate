@@ -13,7 +13,7 @@ exports[`test <App /> render click to third tab 1`] = `
       focus={false}
       forceRenderTabPanel={false}
       onSelect={[Function]}
-      selectedIndex={3}
+      selectedIndex={0}
     >
       <div
         className="react-tabs"
@@ -31,29 +31,32 @@ exports[`test <App /> render click to third tab 1`] = `
           >
             <Tab
               className="react-tabs__tab"
+              data-test-name="mario-tab"
               disabledClassName="react-tabs__tab--disabled"
               focus={false}
               id="react-tabs-10"
               key=".0"
               panelId="react-tabs-11"
-              selected={false}
+              selected={true}
               selectedClassName="react-tabs__tab--selected"
               tabRef={[Function]}
             >
               <li
                 aria-controls="react-tabs-11"
                 aria-disabled="false"
-                aria-selected="false"
-                className="react-tabs__tab"
+                aria-selected="true"
+                className="react-tabs__tab react-tabs__tab--selected"
+                data-test-name="mario-tab"
                 id="react-tabs-10"
                 role="tab"
-                tabIndex={null}
+                tabIndex="0"
               >
                 Mario
               </li>
             </Tab>
             <Tab
               className="react-tabs__tab"
+              data-test-name="mario-tab"
               disabled={true}
               disabledClassName="react-tabs__tab--disabled"
               focus={false}
@@ -69,6 +72,7 @@ exports[`test <App /> render click to third tab 1`] = `
                 aria-disabled="true"
                 aria-selected="false"
                 className="react-tabs__tab react-tabs__tab--disabled"
+                data-test-name="mario-tab"
                 id="react-tabs-12"
                 role="tab"
                 tabIndex={null}
@@ -78,6 +82,7 @@ exports[`test <App /> render click to third tab 1`] = `
             </Tab>
             <Tab
               className="react-tabs__tab"
+              data-test-name="mario-tab"
               disabledClassName="react-tabs__tab--disabled"
               focus={false}
               id="react-tabs-14"
@@ -92,6 +97,7 @@ exports[`test <App /> render click to third tab 1`] = `
                 aria-disabled="false"
                 aria-selected="false"
                 className="react-tabs__tab"
+                data-test-name="mario-tab"
                 id="react-tabs-14"
                 role="tab"
                 tabIndex={null}
@@ -101,29 +107,32 @@ exports[`test <App /> render click to third tab 1`] = `
             </Tab>
             <Tab
               className="react-tabs__tab"
+              data-test-name="mario-tab"
               disabledClassName="react-tabs__tab--disabled"
               focus={false}
               id="react-tabs-16"
               key=".3"
               panelId="react-tabs-17"
-              selected={true}
+              selected={false}
               selectedClassName="react-tabs__tab--selected"
               tabRef={[Function]}
             >
               <li
                 aria-controls="react-tabs-17"
                 aria-disabled="false"
-                aria-selected="true"
-                className="react-tabs__tab react-tabs__tab--selected"
+                aria-selected="false"
+                className="react-tabs__tab"
+                data-test-name="mario-tab"
                 id="react-tabs-16"
                 role="tab"
-                tabIndex="0"
+                tabIndex={null}
               >
                 Yoshi
               </li>
             </Tab>
             <Tab
               className="react-tabs__tab"
+              data-test-name="mario-tab"
               disabledClassName="react-tabs__tab--disabled"
               focus={false}
               id="react-tabs-18"
@@ -138,6 +147,7 @@ exports[`test <App /> render click to third tab 1`] = `
                 aria-disabled="false"
                 aria-selected="false"
                 className="react-tabs__tab"
+                data-test-name="mario-tab"
                 id="react-tabs-18"
                 role="tab"
                 tabIndex={null}
@@ -152,16 +162,41 @@ exports[`test <App /> render click to third tab 1`] = `
           forceRender={false}
           id="react-tabs-11"
           key=".1"
-          selected={false}
+          selected={true}
           selectedClassName="react-tabs__tab-panel--selected"
           tabId="react-tabs-10"
         >
           <div
             aria-labelledby="react-tabs-10"
-            className="react-tabs__tab-panel"
+            className="react-tabs__tab-panel react-tabs__tab-panel--selected"
             id="react-tabs-11"
             role="tabpanel"
-          />
+          >
+            <p>
+              <b>
+                Mario
+              </b>
+               (
+              <i>
+                Japanese: マリオ Hepburn: Mario, [ma.ɾʲi.o]
+              </i>
+              ) (
+              <i>
+                English: /ˈmɑːrioʊ/; Italian: [ˈmaːrjo]
+              </i>
+              ) is a fictional character in the Mario video game franchise, owned by Nintendo and created by Japanese video game designer Shigeru Miyamoto. Serving as the company's mascot and the eponymous protagonist of the series, Mario has appeared in over 200 video games since his creation. Depicted as a short, pudgy, Italian plumber who resides in the Mushroom Kingdom, his adventures generally center upon rescuing Princess Peach from the Koopa villain Bowser. His younger brother and sidekick is Luigi.
+            </p>
+            <p>
+              Source:
+               
+              <a
+                href="https://en.wikipedia.org/wiki/Mario"
+                target="_blank"
+              >
+                Wikipedia
+              </a>
+            </p>
+          </div>
         </TabPanel>
         <TabPanel
           className="react-tabs__tab-panel"
@@ -200,41 +235,16 @@ exports[`test <App /> render click to third tab 1`] = `
           forceRender={false}
           id="react-tabs-17"
           key=".4"
-          selected={true}
+          selected={false}
           selectedClassName="react-tabs__tab-panel--selected"
           tabId="react-tabs-16"
         >
           <div
             aria-labelledby="react-tabs-16"
-            className="react-tabs__tab-panel react-tabs__tab-panel--selected"
+            className="react-tabs__tab-panel"
             id="react-tabs-17"
             role="tabpanel"
-          >
-            <p>
-              <b>
-                Yoshi
-              </b>
-               (
-              <i>
-                ヨッシー Yosshī, [joɕ.ɕiː]
-              </i>
-              ) (
-              <i>
-                English: /ˈjoʊʃi/ or /ˈjɒʃi/
-              </i>
-              ), once romanized as Yossy, is a fictional anthropomorphic dinosaur who appears in video games published by Nintendo. Yoshi debuted in Super Mario World (1990) on the Super Nintendo Entertainment System as Mario and Luigi's sidekick. Yoshi later starred in platform and puzzle games, including Super Mario World 2: Yoshi's Island, Yoshi's Story and Yoshi's Woolly World. Yoshi also appears in many of the Mario spin-off games, including Mario Party and Mario Kart, various Mario sports games, and Nintendo's crossover fighting game series Super Smash Bros. Yoshi belongs to the species of the same name, which is characterized by their variety of colors.
-            </p>
-            <p>
-              Source:
-               
-              <a
-                href="https://en.wikipedia.org/wiki/Yoshi"
-                target="_blank"
-              >
-                Wikipedia
-              </a>
-            </p>
-          </div>
+          />
         </TabPanel>
         <TabPanel
           className="react-tabs__tab-panel"
@@ -289,6 +299,7 @@ exports[`test <App /> render default tabs 1`] = `
           >
             <Tab
               className="react-tabs__tab"
+              data-test-name="mario-tab"
               disabledClassName="react-tabs__tab--disabled"
               focus={false}
               id="react-tabs-0"
@@ -303,6 +314,7 @@ exports[`test <App /> render default tabs 1`] = `
                 aria-disabled="false"
                 aria-selected="true"
                 className="react-tabs__tab react-tabs__tab--selected"
+                data-test-name="mario-tab"
                 id="react-tabs-0"
                 role="tab"
                 tabIndex="0"
@@ -312,6 +324,7 @@ exports[`test <App /> render default tabs 1`] = `
             </Tab>
             <Tab
               className="react-tabs__tab"
+              data-test-name="mario-tab"
               disabled={true}
               disabledClassName="react-tabs__tab--disabled"
               focus={false}
@@ -327,6 +340,7 @@ exports[`test <App /> render default tabs 1`] = `
                 aria-disabled="true"
                 aria-selected="false"
                 className="react-tabs__tab react-tabs__tab--disabled"
+                data-test-name="mario-tab"
                 id="react-tabs-2"
                 role="tab"
                 tabIndex={null}
@@ -336,6 +350,7 @@ exports[`test <App /> render default tabs 1`] = `
             </Tab>
             <Tab
               className="react-tabs__tab"
+              data-test-name="mario-tab"
               disabledClassName="react-tabs__tab--disabled"
               focus={false}
               id="react-tabs-4"
@@ -350,6 +365,7 @@ exports[`test <App /> render default tabs 1`] = `
                 aria-disabled="false"
                 aria-selected="false"
                 className="react-tabs__tab"
+                data-test-name="mario-tab"
                 id="react-tabs-4"
                 role="tab"
                 tabIndex={null}
@@ -359,6 +375,7 @@ exports[`test <App /> render default tabs 1`] = `
             </Tab>
             <Tab
               className="react-tabs__tab"
+              data-test-name="mario-tab"
               disabledClassName="react-tabs__tab--disabled"
               focus={false}
               id="react-tabs-6"
@@ -373,6 +390,7 @@ exports[`test <App /> render default tabs 1`] = `
                 aria-disabled="false"
                 aria-selected="false"
                 className="react-tabs__tab"
+                data-test-name="mario-tab"
                 id="react-tabs-6"
                 role="tab"
                 tabIndex={null}
@@ -382,6 +400,7 @@ exports[`test <App /> render default tabs 1`] = `
             </Tab>
             <Tab
               className="react-tabs__tab"
+              data-test-name="mario-tab"
               disabledClassName="react-tabs__tab--disabled"
               focus={false}
               id="react-tabs-8"
@@ -396,6 +415,7 @@ exports[`test <App /> render default tabs 1`] = `
                 aria-disabled="false"
                 aria-selected="false"
                 className="react-tabs__tab"
+                data-test-name="mario-tab"
                 id="react-tabs-8"
                 role="tab"
                 tabIndex={null}

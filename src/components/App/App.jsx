@@ -9,11 +9,13 @@ class App extends Component {
     return (
       <Tabs>
         <TabList>
-          <Tab>Mario</Tab>
-          <Tab disabled>Luigi</Tab>
-          <Tab>Peach</Tab>
-          <Tab>Yoshi</Tab>
-          <Tab>Toad</Tab>
+          <Tab data-test-name="mario-tab">Mario</Tab>
+          <Tab data-test-name="mario-tab" disabled>
+            Luigi
+          </Tab>
+          <Tab data-test-name="mario-tab">Peach</Tab>
+          <Tab data-test-name="mario-tab">Yoshi</Tab>
+          <Tab data-test-name="mario-tab">Toad</Tab>
         </TabList>
 
         <TabPanel>

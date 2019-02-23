@@ -13,7 +13,7 @@ describe("test <App />", () => {
     const wrapper = mount(<App />);
     console.log("tab", wrapper.find("Tab").get(3));
     wrapper
-      .find("Tab")
+      .find('[data-test-name="mario-tab"]')
       .at(3)
       .simulate("click");
     expect(wrapper).toMatchSnapshot();
