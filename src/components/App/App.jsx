@@ -1,6 +1,6 @@
 /* eslint react/prop-types: 0 */
 
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import nanoid from "nanoid";
 import { remove, findIndex, propEq } from "ramda";
@@ -62,7 +62,7 @@ class App extends Component {
       });
       const key = nanoid();
       const data = await parser(response.data);
-      this.setStateWithLog({
+      return this.setStateWithLog({
         tabs: [
           ...tabs,
           {
@@ -108,7 +108,7 @@ class App extends Component {
     const { defaultIndex, inputRssUrlValue } = this.state;
 
     return (
-      <Fragment>
+      <div>
         <input
           data-test-name="mario-tab-input"
           {...{ value: inputRssUrlValue, onChange: this.onChangeInputRssUrl }}
@@ -120,13 +120,17 @@ class App extends Component {
         >
           Add tab
         </button>
-        <Tabs onSelect={this.selectTab} {...{ defaultIndex }}>
+        <Tabs
+          data-test-name="mario-tab-root"
+          onSelect={this.selectTab}
+          {...{ defaultIndex }}
+        >
           <TabList data-test-name="mario-tab-container">
             {this.renderTabs()}
           </TabList>
           {this.renderTabLists()}
         </Tabs>
-      </Fragment>
+      </div>
     );
   }
 }
