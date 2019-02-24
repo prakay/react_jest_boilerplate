@@ -3,14 +3,17 @@ import { mount } from "enzyme";
 import nock from "nock";
 import delay from "delay";
 import path from "path";
+import fs from "fs";
 
 import App from "../src/components/App";
+import parser from "../src/utils/parser";
 
 const dataTab = 'li[data-test-name="mario-tab"]';
 const dataTabContainer = 'ul[data-test-name="mario-tab-container"]';
 const addButton = '[data-test-name="mario-tab-add"]';
 const deleteButton = '[data-test-name="mario-tab-delete"]';
 const addInput = '[data-test-name="mario-tab-input"]';
+const rootTab = 'div[data-test-name="mario-tab-root"]';
 
 const buildSelectors = wrapper => ({
   tabs: () => wrapper.find(dataTab),
@@ -22,7 +25,8 @@ const buildSelectors = wrapper => ({
       .find(dataTab)
       .at(i)
       .find(deleteButton),
-  addInput: () => wrapper.find(addInput)
+  addInput: () => wrapper.find(addInput),
+  rootTab: () => wrapper.find(rootTab)
 });
 
 const cookiesStub = () => {
@@ -42,24 +46,21 @@ describe("test <App />", () => {
     nock("https://cors.io")
       .defaultReplyHeaders({ "access-control-allow-origin": "*" })
       .get("/?http://www.example.com")
-      .replyWithFile(200, path.join(__dirname, "__fixtures__/rss.xml"), {
-        "Content-Type": "application/json"
-      });
+      .replyWithFile(200, path.join(__dirname, "__fixtures__/rss.xml"));
+    const sampleData = await parser(
+      fs.readFileSync(path.join(__dirname, "__fixtures__/rss.xml"), "utf8")
+    );
 
-    try {
-      expect(s.tabContainer()).toContainMatchingElements(4, dataTab);
-      s.addInput().simulate("change", {
-        target: { value: "http://www.example.com" }
-      });
-      expect(s.addInput()).toHaveProp("value", "http://www.example.com");
-      s.addButtonTab().simulate("click");
-      await delay(100);
-      expect(s.tabContainer()).toContainMatchingElements(5, dataTab);
-
-      return null;
-    } catch (e) {
-      return e;
-    }
+    expect(s.tabContainer()).toContainMatchingElements(4, dataTab);
+    s.addInput().simulate("change", {
+      target: { value: "http://www.example.com" }
+    });
+    expect(s.addInput()).toHaveProp("value", "http://www.example.com");
+    s.addButtonTab().simulate("click");
+    await delay(100);
+    wrapper.update();
+    expect(s.tabContainer()).toContainMatchingElements(5, dataTab);
+    expect(s.tabContainer()).toIncludeText(sampleData.title);
   });
 
   it("delete new tab", () => {
