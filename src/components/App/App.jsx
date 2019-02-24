@@ -1,54 +1,56 @@
 /* eslint react/prop-types: 0 */
 
-import React, { Component } from "react";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import nanoid from "nanoid";
-import { remove, findIndex, propEq } from "ramda";
-import axios from "axios";
-import "react-tabs/style/react-tabs.css";
-import parser from "../../utils/parser";
+import React, { Component } from 'react';
+import {
+  Tab, Tabs, TabList, TabPanel,
+} from 'react-tabs';
+import nanoid from 'nanoid';
+import { remove, findIndex, propEq } from 'ramda';
+import axios from 'axios';
+import 'react-tabs/style/react-tabs.css';
+import parse from '../../utils/parser';
 
-import "./App.css";
+import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     const { cookie } = props;
-    const defaultIndex = cookie ? Number(cookie.get("selectedIndex")) || 0 : 0;
+    const defaultIndex = cookie ? Number(cookie.get('selectedIndex')) || 0 : 0;
     this.state = {
       tabs: [
-        { title: "Tab 1", content: "Content tab 1", key: nanoid() },
-        { title: "Tab 2", content: "Content tab 2", key: nanoid() },
-        { title: "Tab 3", content: "Content tab 3", key: nanoid() },
-        { title: "Tab 4", content: "Content tab 4", key: nanoid() }
+        { title: 'Tab 1', content: 'Content tab 1', key: nanoid() },
+        { title: 'Tab 2', content: 'Content tab 2', key: nanoid() },
+        { title: 'Tab 3', content: 'Content tab 3', key: nanoid() },
+        { title: 'Tab 4', content: 'Content tab 4', key: nanoid() },
       ],
       defaultIndex,
-      inputRssUrlValue: ""
+      inputRssUrlValue: '',
     };
   }
 
-  setStateWithLog = state => {
-    console.log("state", state);
+  setStateWithLog = (state) => {
+    console.log('state', state);
     this.setState(state);
   };
 
-  onChangeInputRssUrl = e => {
+  onChangeInputRssUrl = (e) => {
     this.setStateWithLog({
-      inputRssUrlValue: e.target.value
+      inputRssUrlValue: e.target.value,
     });
   };
 
-  selectTab = index => {
+  selectTab = (index) => {
     const { cookie } = this.props;
 
     if (!cookie) return;
 
-    cookie.set("selectedIndex", index);
+    cookie.set('selectedIndex', index);
   };
 
-  deleteTab = key => {
+  deleteTab = (key) => {
     const { tabs } = this.state;
-    const tabIndex = findIndex(propEq("key", key), tabs);
+    const tabIndex = findIndex(propEq('key', key), tabs);
     if (tabIndex > -1) {
       this.setStateWithLog({ tabs: remove(tabIndex, 1, tabs) });
     }
@@ -58,19 +60,19 @@ class App extends Component {
     const { inputRssUrlValue, tabs } = this.state;
     try {
       const response = await axios.get(`https://cors.io/?${inputRssUrlValue}`, {
-        mode: "no-cors"
+        mode: 'no-cors',
       });
       const key = nanoid();
-      const data = await parser(response.data);
+      const data = await parse(response.data);
       return this.setStateWithLog({
         tabs: [
           ...tabs,
           {
             title: data.title,
-            content: data.items.map(item => item.title).join(","),
-            key
-          }
-        ]
+            content: data.items.map(item => item.title).join(','),
+            key,
+          },
+        ],
       });
     } catch (e) {
       return e;
@@ -113,21 +115,11 @@ class App extends Component {
           data-test-name="mario-tab-input"
           {...{ value: inputRssUrlValue, onChange: this.onChangeInputRssUrl }}
         />
-        <button
-          type="button"
-          onClick={() => this.addTab()}
-          data-test-name="mario-tab-add"
-        >
+        <button type="button" onClick={() => this.addTab()} data-test-name="mario-tab-add">
           Add tab
         </button>
-        <Tabs
-          data-test-name="mario-tab-root"
-          onSelect={this.selectTab}
-          {...{ defaultIndex }}
-        >
-          <TabList data-test-name="mario-tab-container">
-            {this.renderTabs()}
-          </TabList>
+        <Tabs data-test-name="mario-tab-root" onSelect={this.selectTab} {...{ defaultIndex }}>
+          <TabList data-test-name="mario-tab-container">{this.renderTabs()}</TabList>
           {this.renderTabLists()}
         </Tabs>
       </div>

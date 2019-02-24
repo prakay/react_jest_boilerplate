@@ -12,12 +12,9 @@ env:
 parser: babel-eslint
 
 extends:
-  - 'airbnb'
-  - 'prettier'
-  - 'prettier/react'
-  - 'plugin:jest/recommended'
-  - 'plugin:flowtype/recommended'
-
+  - "airbnb"
+  - "plugin:jest/recommended"
+  - "plugin:flowtype/recommended"
 
 rules:
   no-console: 0

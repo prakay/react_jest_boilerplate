@@ -1,6 +1,6 @@
-import Parser from "rss-parser";
+import Parser from 'rss-parser';
 
-export default async xml => {
+export default async (xml) => {
   const parser = new Parser();
 
   const res = await parser.parseString(xml);
