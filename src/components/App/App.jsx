@@ -6,7 +6,6 @@ import nanoid from "nanoid";
 import { remove, findIndex, propEq } from "ramda";
 import axios from "axios";
 import "react-tabs/style/react-tabs.css";
-
 import parser from "../../utils/parser";
 
 import "./App.css";
